@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 SETTINGS_SOURCE_FILE="/config/Settings.yaml"
