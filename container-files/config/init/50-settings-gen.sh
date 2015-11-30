@@ -1,3 +1,6 @@
+#!/bin/sh
+
+
 SETTINGS_SOURCE_FILE="/config/Settings.yaml"
 SETTINGS_TARGET_FILE="/data/www/shared/Configuration/Settings.yaml"
 
