@@ -8,5 +8,3 @@ TYPO3:
         password: DB_PASSWORD
         host:     DB_HOST
         port:     DB_PORT
-  Imagine:
-    driver: 'Imagick'
