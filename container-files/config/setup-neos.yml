@@ -24,6 +24,6 @@
         - Data/Logs
         - Data/Persistent
         - Configuration/Settings.yaml
-    - file: src=/data/www/releases/current state=directory owner=80 group=80
+    - file: dest=/data/www/releases/current state=directory owner=80 group=80
     - name: Create database
       shell: echo "CREATE DATABASE IF NOT EXISTS db" | mysql -u admin -ppass -h db
