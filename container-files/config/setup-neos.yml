@@ -1,0 +1,33 @@
+# Prepare stuff locally
+- hosts: localhost
+  tasks:
+    - file: dest=/data/www/transfer state=directory
+    - git: repo={{REPOSITORY_URL}} dest=/data/www/transfer accept_hostkey=true force=true
+    - command: composer install
+      args:
+        chdir: "/data/www/transfer"
+
+    - name: create default directory structure
+      file: dest=/data/www/{{ item }} state=directory owner=80 group=80
+      with_items:
+        - releases
+        - shared/Data/Logs
+        - shared/Data/Persistent
+        - shared/Configuration
+
+    - name: copy to current folder
+      command: cp -RPp /data/www/transfer /data/www/releases/current
+
+    - name: create symlinks to shared
+      file: src=/data/www/shared/{{ item }} dest=/data/www/releases/current/{{ item }} state=link owner=80 group=80
+      with_items:
+        - Data/Logs
+        - Data/Persistent
+        - Configuration/Settings.yaml
+
+    - command: chown www:www -R . && chmod g+rwx -R .
+      args:
+        chdir: "/data/www/releases/current"
+
+    - name: Create database
+      shell: echo "CREATE DATABASE IF NOT EXISTS db" | mysql -u admin -ppass -h db
