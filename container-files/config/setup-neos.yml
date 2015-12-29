@@ -27,3 +27,8 @@
     - file: dest=/data/www/releases/current state=directory owner=80 group=80
     - name: Create database
       shell: echo "CREATE DATABASE IF NOT EXISTS db" | mysql -u admin -ppass -h db
+    - name: Import site package
+      shell: ./flow site:import --package-key={{SITE_PACKAGE}}
+      when: {{SITE_PACKAGE}}
+      args:
+        chdir: /data/www/releases/current/
