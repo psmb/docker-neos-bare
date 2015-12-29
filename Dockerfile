@@ -1,4 +1,4 @@
-FROM million12/nginx-php:php-70
+FROM million12/nginx-php:latest
 MAINTAINER Dmitri Pisarev dimaip@gmail.com
 
 ADD container-files /
