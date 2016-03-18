@@ -6,7 +6,7 @@ Create a container based on this image with env variables set somehow like this:
 
 This image supports following environment variable for automatically configuring Neos at container startup:
 
-| Setting | Description |
+| Docker env variable | Description |
 |---------|-------------|
 |REPOSITORY_URL|Link to Neos website distribution|
 |VERSION|Git repository branch, commit SHA or release tag, defaults to `master`|
