@@ -27,11 +27,6 @@
     - file: dest=/data/www/releases/current state=directory owner=80 group=80 recurse=true
     - name: Create database
       shell: echo "CREATE DATABASE IF NOT EXISTS db" | mysql -u admin -ppass -h db
-    - name: Import site package
-      shell: ./flow site:import --package-key={{ansible_env.SITE_PACKAGE}}
-      when: ansible_env.SITE_PACKAGE is defined
-      args:
-        chdir: /data/www/releases/current/
     - stat: path=/data/www/shared/Data/Persistent/db.sql
       register: db_dump
     - name: Import database
@@ -41,6 +36,11 @@
       command: ./flow doctrine:migrate
       args:
         chdir: "/data/www/releases/current"
+    - name: Import site package
+      shell: ./flow site:import --package-key={{ansible_env.SITE_PACKAGE}}
+      when: ansible_env.SITE_PACKAGE is defined
+      args:
+        chdir: /data/www/releases/current/
     - name: Publish resources
       command: ./flow resource:publish
       args:
