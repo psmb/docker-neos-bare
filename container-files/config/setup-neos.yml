@@ -2,7 +2,7 @@
 - hosts: localhost
   tasks:
     - file: dest=/data/www/transfer state=directory
-    - git: repo={{REPOSITORY_URL}} version={{VERSION | default(omit)}} dest=/data/www/transfer accept_hostkey=true force=true
+    - git: repo={{REPOSITORY_URL}} version={{VERSION|default(omit)}} dest=/data/www/transfer accept_hostkey=true force=true
     - command: composer install
       args:
         chdir: "/data/www/transfer"
@@ -24,7 +24,7 @@
         - Data/Logs
         - Data/Persistent
         - Configuration/Settings.yaml
-    - file: dest=/data/www/releases/current state=directory owner=80 group=80
+    - file: dest=/data/www/releases/current state=directory owner=80 group=80 recurse='true'
     - name: Create database
       shell: echo "CREATE DATABASE IF NOT EXISTS db" | mysql -u admin -ppass -h db
     - name: Import site package
@@ -45,4 +45,4 @@
       command: ./flow resource:publish
       args:
         chdir: "/data/www/releases/current"
-    - file: dest=/data/www/releases/current state=directory owner=80 group=80
+    - file: dest=/data/www/releases/current state=directory owner=80 group=80 recurse='true'
