@@ -1,4 +1,13 @@
-Just a bare nginx-php image, serving as a target for Neos code deployments with https://github.com/psmb/ansible-deploy
+This image is based upon very robust [nginx-php image](https://github.com/million12/docker-nginx-php) by million12. It's meant to serve as a target for Neos code deployments with Ansible in the fashion of https://github.com/psmb/ansible-deploy.
+
+Essential task of this image is to create `Settings.yaml` file with DB settings to connect to [Million12's MariaDB container](https://github.com/million12/docker-mariadb).
+This `Settings.yaml` file is updated on every container restart with correct settings.
+
+In addition, if you provide certain environment variables (documented below), it would also automatically provision the container with your website distribution, import the site package data or even automatically import persistent resources and database dump.
+
+This image is meant to run only one website per container. We don't use Docker for code deployments, so we use one image for all of our Neos websites, as all of them use the same stack and don't need any alterations. Having only one docker image saves disk space and simplifies container management.
+
+**WARNING: this image is created for our internal use, and is tightly coupled to our infrastructure. I would recommend to create your own image, taking inspiration from this one.**
 
 ##Usage
 
