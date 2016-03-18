@@ -1,7 +1,33 @@
-Just a bare nginx-php image, serving as a target for Neos code deployments with https://github.com/sfi-ru/ansible-deploy
+Just a bare nginx-php image, serving as a target for Neos code deployments with https://github.com/psmb/ansible-deploy
 
 ##Usage
 
-1. Create a container based on this image
-2. Set `REPOSITORY_URL` environment variable to automatically install your Neos website distribution. Leave blank to provision manually
-3. Sync persistant data with `ansible-playbook ~/ansible-deploy/sync-persistent.yml --extra-vars "SOURCE_HOST=source.host SOURCE_PORT=xxxx TARGET_HOST=target.host TARGET_PORT=xxxx" -i "i"`
+Create a container based on this image with env variables set somehow like this:
+
+This image supports following environment variable for automatically configuring Neos at container startup:
+
+| Setting | Description |
+|---------|-------------|
+|REPOSITORY_URL|Link to Neos website distribution|
+|VERSION|Git repository branch, commit SHA or release tag, defaults to `master`|
+|SITE_PACKAGE|Neos website package with exported website data to be imported, optional|
+
+In addition to these settings, if you place database sql dump at `Data/Persistent/db.sql`, it would automatically be imported on first container launch.
+
+Example docker-compose.yml configuration:
+
+```
+...
+web:
+  image: dimaip/neos-bare:latest
+  ports:
+    - '80'
+  links:
+    - db:db
+  volumes_from:
+    - webdata
+  environment:
+    REPOSITORY_URL: 'https://github.com/neos/neos-development-distribution'
+    SITE_PACKAGE: 'TYPO3.NeosDemoTypo3Org'
+    VERSION: '2.0'
+```
