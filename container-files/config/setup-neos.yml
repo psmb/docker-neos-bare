@@ -24,7 +24,7 @@
         - Data/Logs
         - Data/Persistent
         - Configuration/Settings.yaml
-    - file: dest=/data/www/releases/current state=directory owner=80 group=80 recurse='true'
+    - file: dest=/data/www/releases/current state=directory owner=80 group=80 recurse=true
     - name: Create database
       shell: echo "CREATE DATABASE IF NOT EXISTS db" | mysql -u admin -ppass -h db
     - name: Import site package
@@ -45,4 +45,4 @@
       command: ./flow resource:publish
       args:
         chdir: "/data/www/releases/current"
-    - file: dest=/data/www/releases/current state=directory owner=80 group=80 recurse='true'
+    - file: dest=/data/www/releases/current state=directory owner=80 group=80 recurse=true
