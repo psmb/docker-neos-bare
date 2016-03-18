@@ -2,7 +2,7 @@
 - hosts: localhost
   tasks:
     - file: dest=/data/www/transfer state=directory
-    - git: repo={{REPOSITORY_URL}} dest=/data/www/transfer accept_hostkey=true force=true
+    - git: repo={{REPOSITORY_URL}} version={{VERSION | default(omit)}} dest=/data/www/transfer accept_hostkey=true force=true
     - command: composer install
       args:
         chdir: "/data/www/transfer"
