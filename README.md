@@ -11,6 +11,7 @@ This image supports following environment variable for automatically configuring
 |REPOSITORY_URL|Link to Neos website distribution|
 |VERSION|Git repository branch, commit SHA or release tag, defaults to `master`|
 |SITE_PACKAGE|Neos website package with exported website data to be imported, optional|
+|ADMIN_PASSWORD|If set, would create an `admin` user with such password|
 
 In addition to these settings, if you place database sql dump at `Data/Persistent/db.sql`, it would automatically be imported on first container launch.
 
@@ -30,4 +31,5 @@ web:
     REPOSITORY_URL: 'https://github.com/neos/neos-development-distribution'
     SITE_PACKAGE: 'TYPO3.NeosDemoTypo3Org'
     VERSION: '2.0'
+    ADMIN_PASSWORD: 'password'
 ```
