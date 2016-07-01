@@ -38,7 +38,7 @@ web:
     - webdata
   environment:
     REPOSITORY_URL: 'https://github.com/neos/neos-development-distribution'
-    SITE_PACKAGE: 'TYPO3.NeosDemoTypo3Org'
+    SITE_PACKAGE: 'Neos.Demo'
     VERSION: '2.0'
     ADMIN_PASSWORD: 'password'
 ```
