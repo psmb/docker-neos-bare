@@ -42,7 +42,7 @@
       args:
         chdir: /data/www/releases/current/
     - name: Create default admin user
-      shell: ./flow user:create --roles='TYPO3.Neos:Administrator' --username='admin' --password={{ansible_env.ADMIN_PASSWORD}} --first-name='UpdateMe' --last-name='Now'
+      shell: ./flow user:create --roles='Neos.Neos:Administrator' --username='admin' --password={{ansible_env.ADMIN_PASSWORD}} --first-name='UpdateMe' --last-name='Now'
       when: ansible_env.ADMIN_PASSWORD is defined
       args:
         chdir: /data/www/releases/current/
