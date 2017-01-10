@@ -51,3 +51,4 @@
       args:
         chdir: "/data/www/releases/current"
     - file: dest=/data/www/releases/current state=directory owner=80 group=80 recurse=true
+    - file: dest=/data/www/transfer state=directory owner=80 group=80 recurse=true
