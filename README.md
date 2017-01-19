@@ -21,6 +21,7 @@ This image supports following environment variable for automatically configuring
 |VERSION|Git repository branch, commit SHA or release tag, defaults to `master`|
 |SITE_PACKAGE|Neos website package with exported website data to be imported, optional|
 |ADMIN_PASSWORD|If set, would create an `admin` user with such password|
+|BASE_URI|If set, set the `baseUri` option in Settings.yaml|
 
 In addition to these settings, if you place database sql dump at `Data/Persistent/db.sql`, it would automatically be imported on first container launch.
 
@@ -41,4 +42,5 @@ web:
     SITE_PACKAGE: 'Neos.Demo'
     VERSION: '2.0'
     ADMIN_PASSWORD: 'password'
+    BASE_URI: 'https://demo.com/'
 ```
