@@ -8,3 +8,5 @@ Neos:
         password: pass
         host: db
         port: 3306
+  Imagine:
+    driver: 'Imagick'
