@@ -14,6 +14,7 @@
         - shared/Data/Logs
         - shared/Data/Persistent
         - shared/Configuration
+        - Web/_Resources
 
     - name: copy to current folder
       command: cp -RPp /data/www/transfer /data/www/releases/current
@@ -24,6 +25,7 @@
         - Data/Logs
         - Data/Persistent
         - Configuration/Settings.yaml
+        - Web/_Resources
     - file: dest=/data/www/releases/current state=directory owner=80 group=80 recurse=true
     - name: Create database
       shell: echo "CREATE DATABASE IF NOT EXISTS db" | mysql -u admin -ppass -h db
