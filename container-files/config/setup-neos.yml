@@ -14,7 +14,7 @@
         - shared/Data/Logs
         - shared/Data/Persistent
         - shared/Configuration
-        - Web/_Resources
+        - shared/Web/_Resources
 
     - name: copy to current folder
       command: cp -RPp /data/www/transfer /data/www/releases/current
